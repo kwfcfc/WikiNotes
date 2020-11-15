@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/refresh</li>
 
+<li>$:/config/WikiParserRules/Inline/wikilink</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -162,6 +164,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/state/add-plugin-info/$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html/$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/plugins/tiddlywiki/comments</li>
+
+<li>$:/state/editpreviewtype</li>
 
 <li>$:/state/showeditpreview</li>
 
@@ -411,6 +415,8 @@ Error message and password prompt
 
 <li>Welcome !</li>
 
+<li>WikiText</li>
+
 </ul>
 </p>
 
@@ -430,6 +436,9 @@ Error message and password prompt
 </div>
 <div created="20201114090401953" modified="20201114090401953" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/refresh">
 <pre>show</pre>
+</div>
+<div created="20201115025623069" modified="20201115025623069" title="$:/config/WikiParserRules/Inline/wikilink">
+<pre>disable</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -10057,6 +10066,9 @@ Error message and password prompt
 <div created="20201114090635863" modified="20201114090638162" title="$:/state/add-plugin-info/$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html/$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/plugins/tiddlywiki/comments">
 <pre>no</pre>
 </div>
+<div created="20201115091838021" modified="20201115091838021" title="$:/state/editpreviewtype">
+<pre>$:/core/ui/EditTemplate/body/preview/output</pre>
+</div>
 <div created="20201114090526892" modified="20201114090526892" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
@@ -10078,8 +10090,8 @@ Error message and password prompt
 <div created="20201114085959872" modified="20201114090006518" title="$:/state/tab--959111941">
 <pre>$:/core/ui/ControlPanel/EditorTypes</pre>
 </div>
-<div created="20201114090009416" modified="20201114091308591" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20201114090009416" modified="20201115025620872" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
 <div created="20201114090349987" modified="20201114092011807" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -10087,7 +10099,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201114092210077" list="$:/ControlPanel Welcome" modified="20201114092210077" title="$:/StoryList">
+<div created="20201115090321884" list="" modified="20201115090856583" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11240,13 +11252,15 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201114090130718" modified="20201114090209968" title="$:/view">
 <pre>pop</pre>
 </div>
-<div author="" created="20201114092014347" modified="20201114092206242" tags="Home_page" title="Welcome" type="text/x-markdown">
-<pre># 主页
-## 内容
-+ 收集的杂七杂八的知识
-+ 胡言乱语的创作
-+ 知识笔记
-## 列表</pre>
+<div author="" created="20201114092014347" modified="20201115091949612" tags="Home_page" title="Welcome" type="text/vnd.tiddlywiki">
+<pre>! 主页
+!! 内容
+* 收集的知识
+* 知识笔记
+* 知识库
+!! 列表
+!!! 语言
+* [[WikiText]] 维基标记式语言的语法</pre>
 </div>
 <div created="20201114085930301" modified="20201114085944435" tags="Home_page" title="Welcome !">
 <pre>\define lingo-base() $:/language/ControlPanel/Basics/
@@ -11264,6 +11278,100 @@ Before you start storing important information in ~TiddlyWiki it is vital to mak
 &lt;/div&gt;
 
 See the [[control panel|$:/ControlPanel]] for more options.
+</pre>
+</div>
+<div created="20201115085240755" modified="20201115091728559" tags="Language Wiki" title="WikiText" type="text/vnd.tiddlywiki">
+<pre>
+! 维基文本(WikiText)
+
+: 维基文本又称维基标记语言(Wiki Markup Language)，是一种将MeidaWiki内容进行格式编排的语言。它类似于Markdown，但有更丰富的语法特性。本质上与Markdown一样都是HTML简化的标记式语言。
+
+ {{{请将下面的内容放到tiddlywiki中}}}
+//想看看实际上语法如何运用，请按右上角的「编辑」键。//
+!文字格式
+
+*''粗体''：左右各两个单引号「'」
+*//斜体//：左右各两个斜号「/」
+*__加底线__：左右各两个底线「_」
+*==删除的文字==：左右各两个等号「=」
+*^^上标字^^：左右各两个「^」
+*~~下标字~~：左右各两个波浪号「~」
+*字体@@color(green):颜色@@：左右各两个小老鼠「@」，並且在前两个@之后緊接著「''color(颜色名):''」的语法。
+*字体@@bgcolor(#FFCC99):背景颜色@@：左右各两个小老鼠「@」，並且在前两个@之后緊接著「''bgcolor(颜色名):''」的语法。
+
+!! 链接、贴图、水平线
+*WikiWord是[[wiki]]最传统建立內部链接（连到别则记事）的方法，也就是在一串字母当中至少要有两个大写字母，这样整个词就自动变成一个链接，即使目标还沒有被建立也行。
+*但WikiWord的方式太死板，而且只适用于西方用拉丁字母的情形。东方语文，或是我们想要建立的记事标题包含空格、比较像自然的语句时，可在左右用
+{{{
+[[链接目标]]
+}}}
+包起来。
+*但我们若想做个链接连到一则叫作「爱与和平?梦想实现」的记事，但行文当中又不想每次都要全部覆述，而是简单用「我的梦想」来指称的话，可以用这样的语法：
+
+[[我的梦想 | 爱与和平?梦想实现]]
+
+
+**也就是说，「|」之前是所显示的文字
+**「|」后是链接目标，可以是另外一则记事的名字，也可以是一个外部网址的''绝对位址''或''相对位址''；如果所连到的另一则记事还不存在的话，会先被当成是一个外部链接！
+*输入一串网址，也可以被直接转换成超链接，例如http://www.tiddlywiki.com/
+*贴图的语法是
+
+[img[example.jpg|https://images.unsplash.com/photo-1550294791-19030167b78a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80]]
+
+*补充说明
+**''绝对位址''：一串完整的网址，通常以{{{http://}}}（网路上的档案）或{{{file:///}}}（本机的档案）开头，小心結尾不要带进不相干的字串！
+**''相对位址''：为了省时省力，如果指涉的档案和TiddlyWiki笔记放在同一个资料夹中，则可以直接输入档名即可。
+**要连到另一个TiddlyWiki文件中的某一则记事，可在位址或路径的最后加上{{{#目标记事的标题}}}。
+
+----
+*{{{----}}}（四个hyphen）放在行首可以插入一条水平线。
+
+!列表、标题、引文
+*单行前面用「&gt;」，可使用数个表示层次
+&gt;引文第一层
+&gt;&gt;引文第二层
+&gt;&gt;&gt;引文第三层
+&gt;&gt;二
+&gt;一
+若一次有整段引文，
+
+&lt;&lt;&lt;
+这是一整段引文
+
+两行
+&lt;&lt;&lt;
+
+
+!! 表格
+要建立表格很容易。
+
+|一个格子|
+最基本是用两根「管线」（|）夹起来的。
+
+
+|只用一格后面标c→表格标题|c
+||!←不输入则留空|!加!为标题|
+|!加!为标题|一般的格子|预设设靠左|
+| 左空格靠右|右空格靠左 | 两边都空置中 |
+|只填「~」可做垂直延伸上一格|&gt;|只填「&gt;」可水平延伸右一格|
+|~|&gt;| 似乎不可加底色 |
+
+产生出
+
+|只用一格后面标c→表格标题|c
+||!←不输入则留空|!加!为标题|
+|!加!为标题|一般的格子|預设靠左|
+| 左空格靠右|右空格靠左 | 两边都空置中 |
+|只填「~」可做垂直延伸上一格|&gt;|只填「&gt;」可水平延伸右一格|
+|~|&gt;|bgcolor(red):「bgcolor(颜色名):」可加底色|
+*只要记得换行
+|表格|也可以|用在|!列表当中！|
+
+&gt; |! 引文|当中则不用换行|
+&gt; 似乎不行
+
+
+~~嫌我啰嗦的话可看[[这里|http://www.tiddlywiki.com/#HtmlTables]]~~
 </pre>
 </div>
 
